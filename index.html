@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Anus Javed | Portfolio</title>
+<meta name="description" content="Muhammad Anus Javed — BS Computer Science student at the University of Sargodha, focused on game development and web-based systems.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #14141c;
+    --panel: #1b1b27;
+    --panel-2: #21212f;
+    --line: rgba(255,184,77,0.18);
+    --text: #f1f1f5;
+    --muted: #9a9ab0;
+    --accent: #ffb84d;
+    --accent-2: #5eead4;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Manrope', sans-serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3,h4, .display{
+    font-family:'Chakra Petch', sans-serif;
+    letter-spacing:0.01em;
+  }
+
+  a{ color:inherit; text-decoration:none; }
+
+  img{ max-width:100%; display:block; }
+
+  .wrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  section{ padding:120px 0; position:relative; }
+
+  ::selection{ background:var(--accent); color:#14141c; }
+
+  :focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; scroll-behavior:auto !important; }
+  }
+
+  /* ---------- corner-cut panel utility ---------- */
+  .panel{
+    background:var(--panel);
+    border:1px solid var(--line);
+    clip-path:polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+  }
+
+  /* ---------- nav ---------- */
+  header{
+    position:fixed;
+    top:0; left:0; right:0;
+    z-index:100;
+    background:rgba(20,20,28,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+
+  .navwrap{
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 32px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:72px;
+  }
+
+  .logo{
+    font-family:'Chakra Petch', sans-serif;
+    font-weight:700;
+    font-size:1.15rem;
+  }
+  .logo span{ color:var(--accent); }
+
+  .navlinks{
+    display:flex;
+    gap:8px;
+    list-style:none;
+  }
+
+  .navlinks a{
+    display:block;
+    padding:8px 16px;
+    font-size:0.92rem;
+    font-weight:600;
+    color:var(--muted);
+    border:1px solid transparent;
+    transition:color 0.2s ease, border-color 0.2s ease;
+  }
+
+  .navlinks a:hover, .navlinks a.active{
+    color:var(--accent);
+    border-color:var(--line);
+  }
+
+  .navtoggle{
+    display:none;
+    background:none;
+    border:1px solid var(--line);
+    color:var(--text);
+    width:40px; height:40px;
+    font-size:1.1rem;
+    cursor:pointer;
+  }
+
+  /* ---------- hero ---------- */
+  #home{
+    padding-top:180px;
+    padding-bottom:100px;
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:56px;
+    align-items:center;
+  }
+
+  .kicker{
+    color:var(--accent-2);
+    font-weight:600;
+    font-size:0.95rem;
+    margin-bottom:18px;
+  }
+
+  .hero-name{
+    font-size:clamp(2.6rem, 5.2vw, 4.2rem);
+    font-weight:700;
+    line-height:1.05;
+    margin-bottom:16px;
+  }
+
+  .hero-role{
+    font-size:clamp(1.1rem, 2vw, 1.4rem);
+    color:var(--muted);
+    font-weight:500;
+    margin-bottom:28px;
+  }
+
+  .hero-role b{ color:var(--text); font-weight:600; }
+
+  .hero-actions{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-top:36px;
+  }
+
+  .btn{
+    display:inline-block;
+    padding:14px 28px;
+    font-weight:700;
+    font-size:0.95rem;
+    font-family:'Chakra Petch', sans-serif;
+    cursor:pointer;
+    transition:transform 0.15s ease, background 0.2s ease, color 0.2s ease;
+    clip-path:polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  }
+
+  .btn-primary{ background:var(--accent); color:#14141c; }
+  .btn-primary:hover{ transform:translateY(-2px); }
+
+  .btn-ghost{
+    background:transparent;
+    color:var(--text);
+    border:1px solid var(--line);
+  }
+  .btn-ghost:hover{ border-color:var(--accent); color:var(--accent); transform:translateY(-2px); }
+
+  /* hero screen mockup */
+  .hero-screen{
+    aspect-ratio:1/1;
+    background:
+      linear-gradient(var(--panel-2), var(--panel-2)) padding-box,
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 3px);
+    border:1px solid var(--line);
+    clip-path:polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 28px 100%, 0 calc(100% - 28px));
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    opacity:0;
+    transform:translateY(14px) scale(0.98);
+    animation:screenIn 0.8s 0.15s ease forwards;
+  }
+
+  @keyframes screenIn{ to{ opacity:1; transform:translateY(0) scale(1); } }
+
+  .hero-screen::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at 30% 20%, rgba(255,184,77,0.14), transparent 55%);
+  }
+
+  .hero-screen-content{
+    position:relative;
+    text-align:center;
+    padding:24px;
+  }
+
+  .initials{
+    font-family:'Chakra Petch', sans-serif;
+    font-weight:700;
+    font-size:5rem;
+    color:var(--accent);
+    line-height:1;
+    text-shadow:0 0 34px rgba(255,184,77,0.35);
+  }
+
+  .press-start{
+    margin-top:18px;
+    font-size:0.8rem;
+    letter-spacing:0.08em;
+    color:var(--accent-2);
+    font-weight:600;
+  }
+
+  .press-start::after{
+    content:"_";
+    animation:blink 1.1s step-end infinite;
+  }
+
+  @keyframes blink{ 50%{ opacity:0; } }
+
+  .hero-tag{
+    position:absolute;
+    font-size:0.72rem;
+    font-weight:600;
+    color:var(--muted);
+    border:1px solid var(--line);
+    padding:4px 10px;
+  }
+  .hero-tag.tl{ top:16px; left:16px; }
+  .hero-tag.br{ bottom:16px; right:16px; }
+
+  /* ---------- section heads ---------- */
+  .sec-head{
+    max-width:640px;
+    margin-bottom:56px;
+  }
+
+  .sec-num{
+    color:var(--accent);
+    font-weight:600;
+    font-size:0.9rem;
+    margin-bottom:10px;
+  }
+
+  .sec-title{
+    font-size:clamp(1.8rem, 3vw, 2.4rem);
+    font-weight:700;
+    margin-bottom:14px;
+  }
+
+  .sec-desc{ color:var(--muted); font-size:1.02rem; }
+
+  /* ---------- about ---------- */
+  #about .about-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:56px;
+    align-items:start;
+  }
+
+  .about-card{
+    padding:40px;
+  }
+
+  .about-avatar{
+    width:100%;
+    aspect-ratio:4/5;
+    background:var(--panel-2);
+    border:1px solid var(--line);
+    clip-path:polygon(0 0, calc(100% - 22px) 0, 100% 22px, 100% 100%, 22px 100%, 0 calc(100% - 22px));
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:24px;
+  }
+
+  .about-avatar span{
+    font-family:'Chakra Petch', sans-serif;
+    font-size:3.6rem;
+    font-weight:700;
+    color:var(--accent);
+  }
+
+  .about-meta{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .about-meta div{ border-top:1px solid var(--line); padding-top:10px; }
+  .about-meta .label{ font-size:0.78rem; color:var(--muted); font-weight:600; margin-bottom:4px; }
+  .about-meta .value{ font-weight:600; font-size:0.98rem; }
+
+  #about .about-text p{ color:var(--muted); margin-bottom:18px; font-size:1.02rem; max-width:60ch; }
+  #about .about-text b{ color:var(--text); }
+
+  /* ---------- skills ---------- */
+  .skill-groups{ display:grid; grid-template-columns:repeat(2, 1fr); gap:24px; }
+
+  .skill-group{ padding:28px; }
+
+  .skill-group h4{ font-size:1.02rem; margin-bottom:16px; color:var(--accent-2); }
+
+  .chip-row{ display:flex; flex-wrap:wrap; gap:10px; }
+
+  .chip{
+    font-size:0.86rem;
+    font-weight:600;
+    padding:7px 14px;
+    border:1px solid var(--line);
+    color:var(--text);
+    background:var(--panel-2);
+  }
+
+  /* ---------- projects ---------- */
+  .project-list{ display:flex; flex-direction:column; gap:28px; }
+
+  .project-card{
+    display:grid;
+    grid-template-columns:1fr 1.4fr;
+    gap:0;
+    overflow:hidden;
+  }
+
+  .project-visual{
+    background:var(--panel-2);
+    padding:32px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    border-right:1px solid var(--line);
+    position:relative;
+  }
+
+  .project-visual .tag{
+    font-size:0.74rem;
+    font-weight:700;
+    color:var(--accent);
+    margin-bottom:8px;
+  }
+
+  .project-visual .flow{
+    font-size:0.86rem;
+    color:var(--muted);
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    margin-top:14px;
+  }
+  .project-visual .flow div{ display:flex; align-items:center; gap:8px; }
+  .project-visual .flow span.dot{
+    width:6px; height:6px; background:var(--accent-2); flex-shrink:0;
+  }
+
+  .project-body{ padding:32px 36px; }
+
+  .project-body h3{ font-size:1.35rem; margin-bottom:12px; }
+
+  .project-body p{ color:var(--muted); margin-bottom:18px; }
+
+  .project-stack{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px; }
+
+  .project-stack span{
+    font-size:0.76rem;
+    font-weight:700;
+    color:var(--accent-2);
+    border:1px solid var(--line);
+    padding:4px 10px;
+  }
+
+  .project-links{ display:flex; gap:18px; }
+
+  .project-links a{
+    font-weight:700;
+    font-size:0.88rem;
+    color:var(--text);
+    border-bottom:1px solid var(--accent);
+    padding-bottom:2px;
+  }
+  .project-links a:hover{ color:var(--accent); }
+
+  /* ---------- contact ---------- */
+  #contact .contact-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:48px;
+  }
+
+  .contact-links{ display:flex; flex-direction:column; gap:18px; }
+
+  .contact-item{
+    padding:20px 24px;
+    display:flex;
+    align-items:center;
+    gap:16px;
+  }
+
+  .contact-item .ic{
+    width:38px; height:38px;
+    border:1px solid var(--line);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--accent);
+    font-weight:700;
+    flex-shrink:0;
+  }
+
+  .contact-item .label{ font-size:0.78rem; color:var(--muted); font-weight:600; }
+  .contact-item .value{ font-weight:600; }
+
+  .form-panel{ padding:36px; }
+
+  .field{ margin-bottom:18px; }
+
+  .field label{ display:block; font-size:0.82rem; font-weight:600; color:var(--muted); margin-bottom:8px; }
+
+  .field input, .field textarea{
+    width:100%;
+    background:var(--panel-2);
+    border:1px solid var(--line);
+    color:var(--text);
+    padding:12px 14px;
+    font-family:'Manrope', sans-serif;
+    font-size:0.95rem;
+  }
+
+  .field input:focus, .field textarea:focus{ border-color:var(--accent); outline:none; }
+
+  .field textarea{ resize:vertical; min-height:110px; }
+
+  /* ---------- footer ---------- */
+  footer{
+    border-top:1px solid var(--line);
+    padding:32px 0;
+    text-align:center;
+    color:var(--muted);
+    font-size:0.86rem;
+  }
+  footer b{ color:var(--text); }
+
+  /* ---------- responsive ---------- */
+  @media (max-width: 880px){
+    .navlinks{
+      position:fixed;
+      top:72px; right:0;
+      background:var(--panel);
+      border-left:1px solid var(--line);
+      border-bottom:1px solid var(--line);
+      flex-direction:column;
+      width:220px;
+      padding:12px;
+      gap:4px;
+      transform:translateX(100%);
+      transition:transform 0.25s ease;
+    }
+    .navlinks.open{ transform:translateX(0); }
+    .navtoggle{ display:block; }
+
+    #home{ grid-template-columns:1fr; padding-top:150px; }
+    .hero-screen{ max-width:340px; margin:0 auto; }
+
+    #about .about-grid{ grid-template-columns:1fr; }
+    .about-avatar{ max-width:280px; }
+
+    .skill-groups{ grid-template-columns:1fr; }
+
+    .project-card{ grid-template-columns:1fr; }
+    .project-visual{ border-right:none; border-bottom:1px solid var(--line); }
+
+    #contact .contact-grid{ grid-template-columns:1fr; }
+
+    section{ padding:80px 0; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="navwrap">
+    <a href="#home" class="logo">Anus<span>.</span></a>
+    <ul class="navlinks" id="navlinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="navtoggle" id="navtoggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+  </div>
+</header>
+
+<main>
+
+  <!-- HOME -->
+  <section id="home">
+    <div class="wrap" style="display:grid; grid-template-columns:1.1fr 0.9fr; gap:56px; align-items:center; padding:0;">
+      <div>
+        <div class="kicker">BS Computer Science · University of Sargodha</div>
+        <h1 class="hero-name">Muhammad Anus<br>Javed</h1>
+        <p class="hero-role">5th-semester CS student building toward <b>game development</b>, with a growing track record in <b>civic web systems</b>.</p>
+        <p class="sec-desc" style="max-width:52ch;">I spend my study hours split between two things I care about: making small games playable end to end, and building software that solves problems people actually deal with — like getting a complaint in front of the right office.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">See my work</a>
+          <a href="#contact" class="btn btn-ghost">Get in touch</a>
+        </div>
+      </div>
+      <div class="hero-screen">
+        <span class="hero-tag tl">STATUS: LEARNING</span>
+        <div class="hero-screen-content">
+          <div class="initials">MAJ</div>
+          <div class="press-start">PRESS START</div>
+        </div>
+        <span class="hero-tag br">SEM 05</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-num">About</div>
+        <h2 class="sec-title">Where I'm coming from</h2>
+        <p class="sec-desc">A short rundown of who I am and what I'm working toward.</p>
+      </div>
+      <div class="about-grid">
+        <div class="panel about-card">
+          <div class="about-avatar"><span>MAJ</span></div>
+          <div class="about-meta">
+            <div>
+              <div class="label">Degree</div>
+              <div class="value">BS Computer Science</div>
+            </div>
+            <div>
+              <div class="label">University</div>
+              <div class="value">Univ. of Sargodha</div>
+            </div>
+            <div>
+              <div class="label">Semester</div>
+              <div class="value">5th Semester</div>
+            </div>
+            <div>
+              <div class="label">Focus</div>
+              <div class="value">Game Dev · Web</div>
+            </div>
+          </div>
+        </div>
+        <div class="about-text">
+          <p>I'm <b>Muhammad Anus Javed</b>, a 5th-semester Computer Science student at the <b>University of Sargodha</b>. Most recently I've been teaching myself <b>game development</b> — working through how a game actually gets built, from core mechanics to a playable loop, rather than just reading theory about it.</p>
+          <p>Alongside that, I build practical web systems as part of my coursework. My main project so far is a <b>Complaint Management System</b> that lets a citizen file a complaint and routes it to the right institution until it's resolved — the kind of workflow that's easy to describe and genuinely hard to get right.</p>
+          <p>I like projects with a clear before-and-after: an unplayable game becomes a playable one, an unresolved complaint becomes a resolved one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-num">Skills</div>
+        <h2 class="sec-title">What I build with</h2>
+        <p class="sec-desc">Tools and languages I've picked up through coursework and self-study.</p>
+      </div>
+      <div class="skill-groups">
+        <div class="panel skill-group">
+          <h4>Programming</h4>
+          <div class="chip-row">
+            <span class="chip">C++</span>
+            <span class="chip">C#</span>
+            <span class="chip">Python</span>
+            <span class="chip">JavaScript</span>
+          </div>
+        </div>
+        <div class="panel skill-group">
+          <h4>Game Development</h4>
+          <div class="chip-row">
+            <span class="chip">Unity</span>
+            <span class="chip">Game Logic</span>
+            <span class="chip">2D Design</span>
+          </div>
+        </div>
+        <div class="panel skill-group">
+          <h4>Web Development</h4>
+          <div class="chip-row">
+            <span class="chip">HTML</span>
+            <span class="chip">CSS</span>
+            <span class="chip">PHP</span>
+            <span class="chip">MySQL</span>
+          </div>
+        </div>
+        <div class="panel skill-group">
+          <h4>Tools</h4>
+          <div class="chip-row">
+            <span class="chip">Git</span>
+            <span class="chip">GitHub</span>
+            <span class="chip">VS Code</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-num">Projects</div>
+        <h2 class="sec-title">Things I've built</h2>
+        <p class="sec-desc">A civic system I've shipped, and a game I'm currently building.</p>
+      </div>
+      <div class="project-list">
+
+        <div class="panel project-card">
+          <div class="project-visual">
+            <div class="tag">CIVIC SYSTEM</div>
+            <div class="flow">
+              <div><span class="dot"></span> Citizen files a complaint</div>
+              <div><span class="dot"></span> Routed to the right institution</div>
+              <div><span class="dot"></span> Tracked through to resolution</div>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3>Complaint Management System</h3>
+            <p>A web-based system where a citizen submits a complaint, it's forwarded to the relevant institution, and staff can act on it until it's marked resolved — built to replace a manual, paper-based process with something trackable.</p>
+            <div class="project-stack">
+              <span>PHP</span><span>MySQL</span><span>HTML/CSS</span>
+            </div>
+            <div class="project-links">
+              <a href="#">GitHub</a>
+              <a href="#">Live Demo</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel project-card">
+          <div class="project-visual">
+            <div class="tag">GAME DEV · IN PROGRESS</div>
+            <div class="flow">
+              <div><span class="dot"></span> Core mechanic prototyped</div>
+              <div><span class="dot"></span> Levels &amp; assets in progress</div>
+              <div><span class="dot"></span> Playtesting next</div>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3>First Game Project</h3>
+            <p>My entry point into game development — a small playable game where I'm learning the full pipeline: mechanics, level design, and polish. Replace this with your actual game's name and description once it's further along.</p>
+            <div class="project-stack">
+              <span>Unity</span><span>C#</span>
+            </div>
+            <div class="project-links">
+              <a href="#">GitHub</a>
+              <a href="#">Play Demo</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="sec-head">
+        <div class="sec-num">Contact</div>
+        <h2 class="sec-title">Let's talk</h2>
+        <p class="sec-desc">Open to internships, collaborations, or just a chat about game dev.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-links">
+          <div class="panel contact-item">
+            <div class="ic">@</div>
+            <div>
+              <div class="label">Email</div>
+              <div class="value">anusjaved@example.com</div>
+            </div>
+          </div>
+          <div class="panel contact-item">
+            <div class="ic">GH</div>
+            <div>
+              <div class="label">GitHub</div>
+              <div class="value">github.com/muhammad-anus-javed</div>
+            </div>
+          </div>
+          <div class="panel contact-item">
+            <div class="ic">in</div>
+            <div>
+              <div class="label">LinkedIn</div>
+              <div class="value">linkedin.com/in/muhammad-anus-javed</div>
+            </div>
+          </div>
+        </div>
+        <form class="panel form-panel" onsubmit="return false;">
+          <div class="field">
+            <label for="name">Name</label>
+            <input id="name" type="text" placeholder="Your name">
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" type="email" placeholder="you@example.com">
+          </div>
+          <div class="field">
+            <label for="message">Message</label>
+            <textarea id="message" placeholder="Say hello"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 <b>Muhammad Anus Javed</b> · BS Computer Science, University of Sargodha
+</footer>
+
+<script>
+  const toggle = document.getElementById('navtoggle');
+  const links = document.getElementById('navlinks');
+  toggle.addEventListener('click', () => {
+    links.classList.toggle('open');
+    const open = links.classList.contains('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+  const sections = document.querySelectorAll('section[id]');
+  const navA = document.querySelectorAll('.navlinks a');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        navA.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => obs.observe(s));
+</script>
+
+</body>
+</html>
